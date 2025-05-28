@@ -5,14 +5,7 @@ import ProductCard from "./ProductCard";
 
 export default function FilterableProductList() {
 
-    type Product = {
-        id: number;
-        title: string;
-        description: string;
-        category: string;
-        [key: string]: any;
-    };
-    const [products, setProducts] = useState<Product[]>([]);
+    const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
     const [searchTerm, setSearchTerm] = useState('');
