@@ -1,11 +1,17 @@
+import Image from 'next/image';
+
 export default function ProductCard({ product }) {
     return (
         <div className="bg-white shadow-md rounded-lg overflow-hidden">
-            <img
-                src={product.images[0]}
-                alt={product.name}
-                className="w-full h-48 object-cover"
-            />
+            <div className="relative w-full h-48">
+                <Image
+                    src={product.images[0]}
+                    alt={product.name}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                />
+            </div>
             <div className="p-4">
                 <h3 className="text-lg font-semibold text-gray-800">{product.name}</h3>
                 <p className="text-gray-600 mt-2">{product.description}</p>
