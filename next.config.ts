@@ -8,6 +8,9 @@ const nextConfig = {
     // your project has type errors.
     ignoreBuildErrors: true,
   },
+  images: {
+    domains: ['cdn.dummyjson.com'],
+  },
 };
 
 module.exports = nextConfig;
