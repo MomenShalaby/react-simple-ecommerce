@@ -5,9 +5,16 @@ import ProductCard from "./ProductCard";
 
 export default function FilterableProductList() {
 
-    const [products, setProducts] = useState([]);
+    type Product = {
+        id: number;
+        title: string;
+        description: string;
+        category: string;
+        [key: string]: any;
+    };
+    const [products, setProducts] = useState<Product[]>([]);
     const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
+    const [error, setError] = useState('');
     const [searchTerm, setSearchTerm] = useState('');
     const [categoryFilter, setCategoryFilter] = useState('all');
 
@@ -19,7 +26,11 @@ export default function FilterableProductList() {
                 const data = await response.json();
                 setProducts(data.products);
             } catch (err) {
-                setError(err.message);
+                if (err instanceof Error) {
+                    setError(err.message);
+                } else {
+                    setError("An unknown error occurred.");
+                }
             } finally {
                 setLoading(false);
             }

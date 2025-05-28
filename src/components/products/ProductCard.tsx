@@ -1,6 +1,13 @@
 import Image from 'next/image';
 
-export default function ProductCard({ product }) {
+interface Product {
+    name: string;
+    description: string;
+    price: number;
+    images: string[];
+}
+
+export default function ProductCard({ product }: { product: Product }) {
     return (
         <div className="bg-white shadow-md rounded-lg overflow-hidden">
             <div className="relative w-full h-48">
